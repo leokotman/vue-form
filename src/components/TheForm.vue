@@ -2,7 +2,12 @@
   <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input v-model="userName" id="user-name" name="user-name" type="text" />
+      <input
+        v-model.trim="userName"
+        id="user-name"
+        name="user-name"
+        type="text"
+      />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -82,6 +87,9 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <div class="form-control">
+      <rating-control v-model="rating" />
+    </div>
     <div>
       <button>Save Data</button>
     </div>
@@ -89,7 +97,12 @@
 </template>
 
 <script>
+import RatingControl from "./RatingControl.vue";
+
 export default {
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: "",
@@ -97,6 +110,7 @@ export default {
       referrer: "google",
       interest: [],
       howLearn: null,
+      rating: null,
     };
   },
   methods: {
@@ -105,15 +119,26 @@ export default {
       console.log(
         "Username: " +
           this.userName +
-          ", age: " +
+          ". Age: " +
           this.userAge +
-          ", source of info: " +
+          ". Source of info: " +
           this.referrer +
-          ", interests: " +
+          ". Interests: " +
           this.interest +
-          ", how you learn: " +
-          this.howLearn
+          ". How you learn: " +
+          this.howLearn +
+          ". Your rating: " +
+          this.rating
       );
+      this.clearForm();
+    },
+    clearForm() {
+      this.userName = "";
+      this.userAge = null;
+      this.referrer = "google";
+      this.interest = [];
+      this.howLearn = null;
+      this.rating = null;
     },
   },
 };
