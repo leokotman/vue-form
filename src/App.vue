@@ -1,15 +1,20 @@
 <template>
   <the-form @submit-form="storeFormData"></the-form>
-  <p>{{ savedFormData }}</p>
+  <form-results
+    :results="savedFormData"
+    v-if="savedFormData.length !== 0"
+  ></form-results>
 </template>
 
 <script>
 import TheForm from "./components/TheForm.vue";
+import FormResults from "./components/FormResults.vue";
 
 export default {
   name: "App",
   components: {
     TheForm,
+    FormResults,
   },
   data() {
     return {
