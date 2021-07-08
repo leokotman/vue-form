@@ -113,6 +113,7 @@ export default {
       rating: null,
     };
   },
+  emits: ["submit-form"],
   methods: {
     submitForm() {
       alert("Form submitted!");
@@ -130,6 +131,15 @@ export default {
           ". Your rating: " +
           this.rating
       );
+      const formData = {
+        userName: this.userName,
+        userAge: this.userAge,
+        infoSource: this.referrer,
+        interests: this.interest,
+        howLearn: this.howLearn,
+        rating: this.rating,
+      };
+      this.$emit("submit-form", formData);
       this.clearForm();
     },
     clearForm() {
