@@ -1,9 +1,6 @@
 <template>
-  <the-form @submit-form="storeFormData"></the-form>
-  <form-results
-    :results="savedFormData"
-    v-if="savedFormData.length !== 0"
-  ></form-results>
+  <the-form></the-form>
+  <form-results></form-results>
 </template>
 
 <script>
@@ -16,25 +13,25 @@ export default {
     TheForm,
     FormResults,
   },
-  data() {
-    return {
-      savedFormData: [],
-    };
-  },
-  methods: {
-    storeFormData(data) {
-      const savedData = {
-        id: new Date().toISOString(),
-        userName: data.userName,
-        userAge: data.userAge,
-        infoSource: data.infoSource,
-        interests: data.interests,
-        howLearn: data.howLearn,
-        rating: data.rating,
-      };
-      this.savedFormData.push(savedData);
-    },
-  },
+  // data() {
+  //   return {
+  //     savedFormData: [],
+  //   };
+  // },
+  // methods: {
+  //   storeFormData(data) {
+  //     const savedData = {
+  //       id: new Date().toISOString(),
+  //       userName: data.userName,
+  //       userAge: data.userAge,
+  //       infoSource: data.infoSource,
+  //       interests: data.interests,
+  //       howLearn: data.howLearn,
+  //       rating: data.rating,
+  //     };
+  //     this.savedFormData.push(savedData);
+  //   },
+  // },
 };
 </script>
 

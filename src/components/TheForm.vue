@@ -113,7 +113,7 @@ export default {
       rating: null,
     };
   },
-  emits: ["submit-form"],
+  // emits: ["submit-form"],
   methods: {
     submitForm() {
       alert("Form submitted!");
@@ -139,7 +139,16 @@ export default {
         howLearn: this.howLearn,
         rating: this.rating,
       };
-      this.$emit("submit-form", formData);
+      // this.$emit("submit-form", formData);
+
+      fetch("https://vue-form-http-default-rtdb.firebaseio.com/learning.json", {
+        method: "POST",
+        headers: {
+          "Content-type": "appication/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
       this.clearForm();
     },
     clearForm() {
