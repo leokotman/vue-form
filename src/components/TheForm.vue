@@ -141,7 +141,9 @@ export default {
       };
       // this.$emit("submit-form", formData);
 
-      fetch("https://vue-form-http-default-rtdb.firebaseio.com/learning.json", {
+      fetch(
+        "https://vue-form-a6941-default-rtdb.europe-west1.firebasedatabase.app/learning.json",
+        {
         method: "POST",
         headers: {
           "Content-type": "appication/json",
@@ -165,8 +167,10 @@ export default {
 
 <style scoped>
 form {
-  margin: 2rem auto;
-  max-width: 40rem;
+  margin: 2rem;
+  min-width: 30%;
+  max-width: 50%;
+  height: max-content;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 2rem;
