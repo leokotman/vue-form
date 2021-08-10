@@ -15,7 +15,7 @@
         <span>{{ result.userAge }}</span>
         <p>{{ result.infoSource }}</p>
         <ul>
-          <li v-for="interest in result.interests" :key="interest[index]">
+          <li v-for="interest in result.interests" :key="interest">
             <p>{{ interest }}</p>
           </li>
         </ul>

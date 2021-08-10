@@ -90,6 +90,7 @@
     <div class="form-control">
       <rating-control v-model="rating" />
     </div>
+    <p v-if="error">{{ error }}</p>
     <div>
       <button>Save Data</button>
     </div>
@@ -111,12 +112,12 @@ export default {
       interest: [],
       howLearn: null,
       rating: null,
+      error: null,
     };
   },
   // emits: ["submit-form"],
   methods: {
     submitForm() {
-      alert("Form submitted!");
       console.log(
         "Username: " +
           this.userName +
@@ -141,17 +142,38 @@ export default {
       };
       // this.$emit("submit-form", formData);
 
+      this.error = null;
+
       fetch(
         "https://vue-form-a6941-default-rtdb.europe-west1.firebasedatabase.app/learning.json",
         {
-        method: "POST",
-        headers: {
-          "Content-type": "appication/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      this.clearForm();
+          method: "POST",
+          headers: {
+            "Content-type": "appication/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      )
+        .then((response) => {
+          if (
+            response.ok &&
+            formData.userName &&
+            formData.userAge &&
+            formData.howLearn &&
+            formData.interests &&
+            formData.rating
+          ) {
+            console.log("response is ok");
+            alert("Form submitted!");
+            this.clearForm();
+          } else {
+            throw new Error("Couldn't save data");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.error = error.message;
+        });
     },
     clearForm() {
       this.userName = "";
