@@ -11,7 +11,14 @@
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input v-model="userAge" id="age" name="age" type="number" min="0" />
+      <input
+        v-model="userAge"
+        id="age"
+        name="age"
+        type="number"
+        min="0"
+        max="120"
+      />
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -88,6 +95,7 @@
       </div>
     </div>
     <div class="form-control">
+      <h2>How do you rate this app?</h2>
       <rating-control v-model="rating" />
     </div>
     <p v-if="error">{{ error }}</p>
@@ -189,12 +197,12 @@ export default {
 
 <style scoped>
 form {
-  margin: 2rem;
+  margin: 1rem;
   min-width: 30%;
   max-width: 50%;
   height: max-content;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 8px rgba(3, 43, 2, 0.26);
   padding: 2rem;
   background-color: #ffffff;
 }

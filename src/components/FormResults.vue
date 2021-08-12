@@ -10,7 +10,7 @@
       No stored data found. Save something to see the data.
     </p>
     <ul v-else-if="!isLoading && results && results.length > 0">
-      <li v-for="result in results" :key="result.id">
+      <li v-for="result in results" :key="result.id" class="result">
         <h4>{{ result.userName }}</h4>
         <span>{{ result.userAge }}</span>
         <p>{{ result.infoSource }}</p>
@@ -89,18 +89,46 @@ export default {
 </script>
 
 <style scoped>
+section {
+  margin: 1rem;
+  min-width: 40%;
+  max-width: 50%;
+  height: max-content;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(24, 23, 116, 0.26);
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
 ul {
-  margin: 0;
+  margin: 1rem 0 1rem;
   padding: 0;
 }
 ul li {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  width: 40%;
+  justify-content: space-between;
 }
-li h4,
-li span,
-li p {
-  margin: 1rem;
+.result {
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26);
+}
+
+button {
+  font: inherit;
+  border: 1px solid #0076bb;
+  background-color: #0076bb;
+  color: white;
+  cursor: pointer;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+}
+
+button:hover,
+button:active {
+  border-color: #002350;
+  background-color: #002350;
 }
 </style>

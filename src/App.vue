@@ -39,5 +39,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 </style>
