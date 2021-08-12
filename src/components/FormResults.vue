@@ -28,7 +28,11 @@
 
 <script>
 export default {
-  // props: ["results"],
+  props: {
+    formSubmitted: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
       results: [],
@@ -68,6 +72,14 @@ export default {
           console.error(error);
           this.error = "Something went wrong, please try again later";
         });
+    },
+  },
+  watch: {
+    formSubmitted() {
+      if (this.formSubmitted === true) {
+        console.log("watcher worked - results updated");
+        this.loadData();
+      }
     },
   },
   mounted() {

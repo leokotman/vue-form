@@ -115,7 +115,7 @@ export default {
       error: null,
     };
   },
-  // emits: ["submit-form"],
+  emits: ["submit-form"],
   methods: {
     submitForm() {
       console.log(
@@ -140,7 +140,6 @@ export default {
         howLearn: this.howLearn,
         rating: this.rating,
       };
-      // this.$emit("submit-form", formData);
 
       this.error = null;
 
@@ -163,8 +162,9 @@ export default {
             formData.interests &&
             formData.rating
           ) {
-            console.log("response is ok");
+            console.log("fetch response is ok");
             alert("Form submitted!");
+            this.$emit("submit-form");
             this.clearForm();
           } else {
             throw new Error("Couldn't save data");

@@ -1,6 +1,6 @@
 <template>
-  <the-form></the-form>
-  <form-results></form-results>
+  <the-form @submit-form="updateResults"></the-form>
+  <form-results :formSubmitted="formSubmitted"></form-results>
 </template>
 
 <script>
@@ -13,25 +13,21 @@ export default {
     TheForm,
     FormResults,
   },
-  // data() {
-  //   return {
-  //     savedFormData: [],
-  //   };
-  // },
-  // methods: {
-  //   storeFormData(data) {
-  //     const savedData = {
-  //       id: new Date().toISOString(),
-  //       userName: data.userName,
-  //       userAge: data.userAge,
-  //       infoSource: data.infoSource,
-  //       interests: data.interests,
-  //       howLearn: data.howLearn,
-  //       rating: data.rating,
-  //     };
-  //     this.savedFormData.push(savedData);
-  //   },
-  // },
+  data() {
+    return {
+      formSubmitted: false,
+    };
+  },
+  methods: {
+    updateResults() {
+      this.formSubmitted = true;
+      console.log("new data submitted");
+      setTimeout(() => {
+        this.formSubmitted = false;
+        console.log("formSubmitted = false");
+      }, 3000);
+    },
+  },
 };
 </script>
 
